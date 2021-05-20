@@ -1,8 +1,8 @@
-export interface Post {
+export interface Libro {
     titulo: string;
     texto: string;
     autor: string;
     imagen: string;
-    fecha: string;
+    fecha: Date;
     categoria: string;
 }

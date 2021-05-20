@@ -1,0 +1,13 @@
+.libros{
+display: flex;
+flex-wrap: wrap;
+margin-top: 20px;
+}
+
+.libro{
+    width: 48%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    background-color: lightblue
+}

@@ -1,1 +1,11 @@
-<p>blog works!</p>
+<div class="libros">
+    <div class="libro" *ngFor="let libro of libros">
+        <h2>{{libro.titulo}}</h2>
+        <p>{{libro.texto}}</p>
+        <p>{{libro.autor}}</p>
+        <img [src]="libro.imagen" alt="">
+        <p>{{libro.texto}}</p>
+        <p>{{libro.fecha}}</p>
+        <p>{{libro.categoria}}</p>
+    </div>
+</div>
