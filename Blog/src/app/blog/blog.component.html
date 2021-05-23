@@ -1,3 +1,11 @@
+<select (change)="onChange($event)">
+    <option value="todos">Todos</option>
+    <option value="cocina">Cocina</option>
+    <option value="random">Random</option>
+    <option value="ficcion">Ficcion</option>
+    <option value="novela">Novela</option>
+</select>
+
 <div class="libros">
     <div class="libro" *ngFor="let libro of libros">
         <h2>{{libro.titulo}}</h2>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Libro } from 'src/app/interfaces/libros.interface';
 import { PostService } from '../services/post.service';
 
 @Component({
@@ -8,11 +7,17 @@ import { PostService } from '../services/post.service';
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
+
+
   libros: any;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService) {
+  }
+
+
 
   ngOnInit(): void {
+
     this.postService.getAllPost()
       .then(response => {
         this.libros = response;
@@ -20,8 +25,13 @@ export class BlogComponent implements OnInit {
       })
       .catch(error => console.log(error))
   }
-  onSubmit($event: any) {
-    console.log($event);
 
+
+  async onChange($event: any) {
+    if ($event.target.value === 'todos') {
+      this.libros = await this.postService.getAllPost();
+    } else {
+      this.libros = await this.postService.getByCategoria($event.target.categoria);
+    }
   }
 }

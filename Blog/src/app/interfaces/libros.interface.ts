@@ -1,8 +1,8 @@
 export interface Libro {
-    titulo: string;
-    texto: string;
-    autor: string;
-    imagen: string;
-    fecha: Date;
-    categoria: string;
+    titulo?: string;
+    texto?: string;
+    autor?: string;
+    imagen?: string;
+    fecha?: Date;
+    categoria?: string;
 }
