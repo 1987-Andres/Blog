@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Libro } from '../interfaces/libros.interface';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PostService } from '../services/post.service';
+
 
 @Component({
   selector: 'app-formulario',
@@ -8,34 +9,35 @@ import { Libro } from '../interfaces/libros.interface';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
-
-  @Output() libroCreado: EventEmitter<Libro>;
-
-  nuevoLibro: Libro;
-
-  constructor() {
-    this.nuevoLibro = {
-      titulo: '',
-      texto: '',
-      autor: '',
-      imagen: '',
-      categoria: ''
-    }
-    this.libroCreado = new EventEmitter();
-  }
-
+  formulario: FormGroup;
+  constructor(private postService: PostService) {
+    this.formulario = new FormGroup({
+      titulo: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5)
+      ]),
+      autor: new FormControl('', [
+        Validators.required
+      ]),
+      texto: new FormControl('', [
+        Validators.required
+      ]),
+      imagen: new FormControl('', [
+        Validators.required
+      ]),
+      fecha: new FormControl('', [
+        Validators.required
+      ]),
+      categoria: new FormControl('', [
+        Validators.required
+      ])
+    });
+  };
   ngOnInit(): void {
   }
-
-  onClick() {
-    this.libroCreado.emit(this.nuevoLibro);
-    this.nuevoLibro = {
-      titulo: '',
-      texto: '',
-      autor: '',
-      imagen: '',
-      categoria: ''
-    }
+  onSubmit() {
+    this.postService.add(this.formulario.value);
+    console.log(this.formulario.value);
+    this.formulario.reset();
   }
-
 }

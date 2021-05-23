@@ -1,12 +1,14 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Libro } from '../interfaces/libros.interface';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PostService {
   libros: Libro[];
+
   constructor(private httpClient: HttpClient) {
     this.libros = [
       {
@@ -49,14 +51,31 @@ export class PostService {
     })
   }
 
-  add(nuevoLibro: Libro) {
-    this.libros.push(nuevoLibro);
+  add(pPost: any) {
+    pPost.categoria = pPost.categoria.toUpperCase();
+    this.libros.push(pPost);
+    localStorage.setItem('arrLibros', JSON.stringify(this.libros));
   }
 
-  getByCategoria($event: any): Promise<Libro[]> {
-    return new Promise<Libro[]>((resolve, reject) => {
-      resolve($event.target.categoria);
+
+
+  getByCategoria(pCategoria: string): Promise<Libro[]> {
+    return new Promise<Libro[]>(resolve => {
+      const arrCategoriaLibro = [];
+      for (let libro of this.libros) {
+        if (libro.categoria === pCategoria) {
+          arrCategoriaLibro.push(libro)
+        }
+      }
+      resolve(arrCategoriaLibro);
     })
   }
+
+  getCategorias(): string[] {
+    const arrCat = this.libros.map(arrCategorias => arrCategorias.categoria);
+    return [...new Set(arrCat)];
+  }
+
+
 
 }

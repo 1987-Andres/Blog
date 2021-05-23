@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
+import { Libro } from '../interfaces/libros.interface'
 
 @Component({
   selector: 'app-blog',
@@ -8,30 +9,42 @@ import { PostService } from '../services/post.service';
 })
 export class BlogComponent implements OnInit {
 
-
-  libros: any;
+  listadoLibros: Libro[];
+  categoriaLibros: string[];
 
   constructor(private postService: PostService) {
+    this.listadoLibros = [];
+    this.categoriaLibros = [];
   }
 
 
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    if (localStorage.getItem('arrLibros')) {
+      const strJson = localStorage.getItem('arrLibros');
+      // this.listadoLibros = JSON.parse(strJson);
+      //console.log(strJson)
+    } else {
+      this.listadoLibros = [];
+    };
 
-    this.postService.getAllPost()
-      .then(response => {
-        this.libros = response;
+    try {
+      this.listadoLibros = await this.postService.getAllPost();
+    } catch (error) {
 
-      })
-      .catch(error => console.log(error))
+    }
+    this.categoriaLibros = this.postService.getCategorias();
   }
 
 
   async onChange($event: any) {
-    if ($event.target.value === 'todos') {
-      this.libros = await this.postService.getAllPost();
+    if ($event.target.value === 'todasCat') {
+      this.listadoLibros = await this.postService.getAllPost();
     } else {
-      this.libros = await this.postService.getByCategoria($event.target.categoria);
+      this.listadoLibros = await this.postService.getByCategoria($event.target.value);
     }
+  } catch(error: any) {
+
   }
+
 }

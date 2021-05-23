@@ -7,13 +7,13 @@
 </select>
 
 <div class="libros">
-    <div class="libro" *ngFor="let libro of libros">
+    <div class="libro" *ngFor="let libro of listadoLibros">
         <h2>{{libro.titulo}}</h2>
         <p>{{libro.texto}}</p>
         <p>{{libro.autor}}</p>
         <img [src]="libro.imagen" alt="">
         <p>{{libro.texto}}</p>
-        <p>{{libro.fecha}}</p>
+        <p>{{libro.fecha | date:'YYYY'}}</p>
         <p>{{libro.categoria}}</p>
     </div>
 </div>
