@@ -8,11 +8,13 @@
 
 <div class="libros">
     <div class="libro" *ngFor="let libro of listadoLibros">
-        <h2>{{libro.titulo}}</h2>
+        <h1>{{libro.titulo}}</h1>
         <p>{{libro.texto}}</p>
+        <h3>Autor: </h3>
         <p>{{libro.autor}}</p>
-        <p>{{libro.texto}}</p>
+        <h3>Año de publicacion: </h3>
         <p>{{libro.fecha | date:'YYYY'}}</p>
+        <h3>Categoria: </h3>
         <p>{{libro.categoria}}</p>
         <img [src]="libro.imagen" alt="">
     </div>

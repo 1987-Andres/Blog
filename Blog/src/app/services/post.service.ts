@@ -20,14 +20,6 @@ export class PostService {
         categoria: 'Novela',
       },
       {
-        titulo: 'Cincuenta Sombras de Grey',
-        texto: 'La exitosa combinacion de historia romantica y juego erotico de alto voltaje que ha tocado la fibra de muchas mujeres',
-        autor: 'E L James',
-        imagen: 'https://images-na.ssl-images-amazon.com/images/I/41iI1HfqzuL._SX322_BO1,204,203,200_.jpg',
-        fecha: new Date('2015'),
-        categoria: 'Ficcion',
-      },
-      {
         titulo: 'Vivir con arte',
         texto: 'Todos tenemos algo en común: vivimos lo bueno, lo malo, lo peor y lo mejor. A todos nos toca luchar para conseguir lo mejor, sin dejar de disfrutar lo bueno; esforzándonos para pasar lo malo y superar lo peor. Porque de lo más bajo puedes subir a lo más alto... o al revés. Y el secreto de una buena vida siempre está en el mismo lugar: en tu cabeza, ¡y en tus manos',
         autor: 'Joaquin Sanchez',
@@ -42,6 +34,14 @@ export class PostService {
         imagen: 'https://images-na.ssl-images-amazon.com/images/I/51qtRHH7p7L._SX476_BO1,204,203,200_.jpg',
         fecha: new Date('2021'),
         categoria: 'Cocina',
+      },
+      {
+        titulo: 'Cincuenta Sombras de Grey',
+        texto: 'La exitosa combinacion de historia romantica y juego erotico de alto voltaje que ha tocado la fibra de muchas mujeres',
+        autor: 'E L James',
+        imagen: 'https://images-na.ssl-images-amazon.com/images/I/41iI1HfqzuL._SX322_BO1,204,203,200_.jpg',
+        fecha: new Date('2015'),
+        categoria: 'Ficcion',
       }
     ]
   }

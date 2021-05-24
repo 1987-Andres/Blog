@@ -1,6 +1,8 @@
-<div>
-    <h1>LIBROS</h1>
+<div class="fondo">
+    <div>
+        <h1>LIBROS</h1>
+    </div>
+    <button [routerLink]="['/blog']">Blog</button>
+    <button [routerLink]="['/form']">Formulario</button>
+    <router-outlet></router-outlet>
 </div>
-<button [routerLink]="['/blog']">Blog</button>
-<button [routerLink]="['/form']">Formulario</button>
-<router-outlet></router-outlet>
