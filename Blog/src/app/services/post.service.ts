@@ -63,12 +63,14 @@ export class PostService {
     return new Promise<Libro[]>(resolve => {
       const arrCategoriaLibro = [];
       for (let libro of this.libros) {
-        if (libro.categoria === pCategoria) {
+        if (libro.categoria.toLocaleLowerCase() === pCategoria.toLocaleLowerCase()) {
           arrCategoriaLibro.push(libro)
           console.log(libro);
 
         }
       }
+      console.log(arrCategoriaLibro);
+
       resolve(arrCategoriaLibro);
     })
   }
