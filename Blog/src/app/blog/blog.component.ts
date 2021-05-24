@@ -34,17 +34,14 @@ export class BlogComponent implements OnInit {
     this.categoriaLibros = this.postService.getCategorias();
   }
 
-
   async onChange($event: any) {
-    console.log($event);
+    console.log($event.target.value);
 
     if ($event.target.value === 'todos') {
       this.listadoLibros = await this.postService.getAllPost();
     } else {
       this.listadoLibros = await this.postService.getByCategoria($event.target.value);
     }
-  } catch(error: any) {
-
-  }
+  } catch(error: any) { }
 
 }

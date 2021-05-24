@@ -65,6 +65,8 @@ export class PostService {
       for (let libro of this.libros) {
         if (libro.categoria === pCategoria) {
           arrCategoriaLibro.push(libro)
+          console.log(libro);
+
         }
       }
       resolve(arrCategoriaLibro);
@@ -72,10 +74,8 @@ export class PostService {
   }
 
   getCategorias(): string[] {
-    const arrCat = this.libros.map(arrCategorias => arrCategorias.categoria);
-    return [...new Set(arrCat)];
+    return [...new Set(this.libros.map(libros => libros.categoria))];
   }
-
 
 
 }
