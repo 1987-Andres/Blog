@@ -17,8 +17,6 @@ export class BlogComponent implements OnInit {
     this.categoriaLibros = [];
   }
 
-
-
   async ngOnInit() {
     if (localStorage.getItem('arrLibros')) {
       const strJson = localStorage.getItem('arrLibros');
